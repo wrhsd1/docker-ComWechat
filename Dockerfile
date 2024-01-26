@@ -15,7 +15,7 @@ EXPOSE 5905
 
 RUN apt update && \
     apt --no-install-recommends install wget winbind samba tigervnc-standalone-server tigervnc-common openbox unzip -y && \
-    wget --no-check-certificate -O /bin/dumb-init "https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_arm64"
+    wget --no-check-certificate -O /bin/dumb-init "https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_arm64.deb"
 
 COPY wine/simsun.ttc  /home/user/.wine/drive_c/windows/Fonts/simsun.ttc
 COPY wine/微信.lnk /home/user/.wine/drive_c/users/Public/Desktop/微信.lnk
