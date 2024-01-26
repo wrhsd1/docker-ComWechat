@@ -45,8 +45,8 @@ jobs:
 
       - uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Get Version Tag
         id: get_version_tag
@@ -62,13 +62,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME }}/docker-com_wechat_robot:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/docker-com_wechat_robot:${{ steps.get_version_tag.outputs.VERSION }}
-          labels: |
-            maintainer=${{ github.event.head_commit.author.email }}
-            timestamp=${{ github.event.head_commit.timestamp }}
-            message=${{ github.event.head_commit.message }}
-            commit=${{ github.event.head_commit.url }}
+            ${{ secrets.DOCKERHUB_USERNAME  }}/docker-com_wechat_robot:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
